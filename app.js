@@ -6,6 +6,7 @@ const cors = require('cors')
 //database
 const connectDB = require('./db/connectDB')
 
+const port = process.env.PORT||5000
 //routes
 const userRouter = require('./routes/user')
 const actorRouter = require('./routes/actor')
@@ -26,7 +27,7 @@ app.get("/", (req, res) => {
 const start = async () => {
     try {
         await connectDB(process.env.MONGO_URI)
-        app.listen(5000,()=>console.log('Server is listening on port 5000...'))
+        app.listen(port,()=>console.log('Server is listening on port 5000...'))
     } catch (error) {
         console.log(error)
     }
